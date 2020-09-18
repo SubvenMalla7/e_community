@@ -35,7 +35,7 @@ class SideProfile extends React.Component {
                                 </a>
                             </figure>
                             <div className="profile-desc text-center">
-                                <h6 className="author"><a href="profile.html" style={{ color: '#ffffff' }}>{this.state.name}</a></h6>
+                                <h6 className="author"><a href={{}} style={{ color: '#ffffff' }}>{this.state.name}</a></h6>
                                 <p>{this.state.email}</p>
                             </div>
                         </div>

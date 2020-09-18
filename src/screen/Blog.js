@@ -130,7 +130,7 @@ class Blog extends React.Component {
           </div>
         </main>
         {/* Scroll to top start */}
-        <div className="scroll-top not-visible">
+        <div className="scroll-top ">
           <i className="bi bi-finger-index" onClick={() => {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;

@@ -3,6 +3,7 @@ Table of content
 -------------------
 1. Start Header Area
 2. slider area start
+
 3. features area css start
 4. hot deals area css start
 5. product
@@ -1487,7 +1488,7 @@ textarea:focus {
 }
 
 .main-wrapper {
-  margin-top: 120px;
+  margin-top: 100px;
   padding-bottom: 105px;
   color: #ff914d;
 }
@@ -1642,16 +1643,15 @@ textarea:focus {
   line-height: 1;
   color: #ff914d;
   text-transform: capitalize;
+  margin-top: 10px;
 }
 
 .author a {
   color: #ff914d;
+  
 }
 
-.author a:hover {
-  color: #af4dff;
-  text-decoration: underline;
-}
+
 
 .post-settings-bar {
   margin-left: auto;
@@ -2007,7 +2007,7 @@ textarea:focus {
   display: block;
   border-radius: 50%;
   overflow: hidden;
-  bottom: -40px;
+  bottom: -50px;
   left: 0;
   right: 0;
   color: #ff914d;

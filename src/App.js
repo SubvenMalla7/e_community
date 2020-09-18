@@ -8,6 +8,8 @@ import SignUp from "./screen/signup/signup";
 import { AuthProvider } from "./Auth";
 import ProtectedRoute from "./protected.route";
 import ChatDashboard from "./screen/Chat/chatDashboard";
+import MobileChat from "./screen/Chat/mobilechat/mobileChatDashBoard";
+import MobileChatView from "./screen/Chat/mobilechat/mobileChatView";
 
 const useStyles = makeStyles({});
 
@@ -22,6 +24,8 @@ export default function App() {
           <Route exact from="/" component={Login} />
           <Route exact from="/signup" component={SignUp} />
           <ProtectedRoute exact from="/message" component={ChatDashboard} />
+          <ProtectedRoute exact path="/mobMessage" component={MobileChat} />
+          <ProtectedRoute exact path="/mobileChatView" component={MobileChatView} />
           <ProtectedRoute exact path="/profile" component={Profile} />
         </Switch>
       </AuthProvider>

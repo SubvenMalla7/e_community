@@ -106,8 +106,7 @@ const MobileNav = (props) => {
                                 <IconButton aria-label="show Home" color="inherit" onClick={() => handleMenuClick('/blog')}><HomeIcon /></IconButton>
                             </li>
                             <li className="msg-trigger"><a href="#a" onClick={() => {
-                                let box = document.querySelector('.message-dropdown');
-                                box.classList.remove('hidebox');
+                                handleMenuClick('/mobMessage')
                                 resetBadge();
                             }}><IconButton aria-label="show 4 new mails" color="inherit" size="medium">
                                     <Badge badgeContent={messageCount

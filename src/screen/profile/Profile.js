@@ -10,7 +10,7 @@ class Profile extends React.Component {
     return (
 
       <>
-        {console.log("nav props", data.image)}
+        
         <NavBar />
         <ProfileComponent currentUser={data.currentUser} name={data.name} email={data.email} bio={data.bio} image={data.image} proff={data.proff} />
       </>
