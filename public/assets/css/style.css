@@ -1625,7 +1625,8 @@ textarea:focus {
 }
 
 .post-share-btn:hover {
-  background-color: #333333;
+  background-color: #ff914d;
+  border: none;
 }
 
 .share-field-big {

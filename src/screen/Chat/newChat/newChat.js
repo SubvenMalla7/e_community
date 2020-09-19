@@ -102,7 +102,7 @@ class NewChatForm extends React.Component {
                     <form className={classes.form} onSubmit={(e) => this.submitNewChat(e)}>
                         <FormControl fullWidth>
                             <InputLabel htmlFor="new-username">
-                                Reciever's Email(example@example,example1@example.com)
+                                example@example,example1@example.com
                             </InputLabel>
                             <Input required className={classes.input} autoFocus onChange={(e) => this.userTyping("username", e)} id="new- username"></Input>
                         </FormControl>
