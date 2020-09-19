@@ -86,6 +86,9 @@ class BlogPostBar extends React.Component {
 
 
     updateBlog = async (blog) => {
+        var d = new Date();
+        var date = ` ${d.getFullYear()}-${d.getMonth()}-${d.getDate()}-${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}`;
+        const docKey = date.toString();
         if (this.state.title == null && this.state.body == null && this.state.imageAsFile == null) {
             this.setState({
                 valueError: 'Field Empty'
@@ -93,8 +96,7 @@ class BlogPostBar extends React.Component {
         } else {
             document.getElementById("textbox").style.display = "none";
             this.clear()
-            var d = new Date();
-            var date = ` ${d.getFullYear()}-${d.getMonth()}-${d.getDate()}-${d.getHours()}-${d.getMinutes()}-${d.getSeconds()}`;
+
             await firebase
                 .firestore()
                 .collection('blog')
@@ -105,11 +107,19 @@ class BlogPostBar extends React.Component {
                     image: this.state.imageAsFile == null ? blog.image : this.state.imageAsUrl
                 });
 
-
-            await firebase.firestore().collection('notification').doc(date).set({
-                id: date.toString,
-                notification: `Admin Edit Blog "${this.props.blog.length !== 0 ? this.props.blog[0].title : this.state.title}"`
+      
+            await firebase.firestore().collection('notification').doc(docKey).set({
+                notification: ` News "${this.props.blog.length !== 0 ? this.props.blog[0].title : this.state.title} was Edit"`,
+                date: docKey
             });
+            await firebase
+                .firestore()
+                .collection('badge')
+                .doc("count")
+                .update({
+                    notiCount: this.props.notiCount + 1
+                });
+
             this.clear();
 
         }
@@ -179,7 +189,7 @@ class BlogPostBar extends React.Component {
                                     </div>
                                     <div className="modal-body custom-scroll" style={{ height: '80px' }}>
                                         <input type="file" onChange={(e) => this.userTyping("image", e)} defaultValue={blog.length !== 0 ? blog[0].image : ''}></input>
-                                        <button type="button" className="post-share-btn" onClick={() => this.imageUploadFn()}>{this.state.loading === false ? "Upload Image" : <CircularProgress color="secondary" size="2rem"/>}</button>
+                                        <button type="button" className="post-share-btn" onClick={() => this.imageUploadFn()}>{this.state.loading === false ? "Upload Image" : <CircularProgress color="secondary" size="2rem" />}</button>
                                         {/* <textarea required name="share" className="share-field-big custom-scroll" onChange={(e) => this.userTyping("image", e)} id="image" placeholder="Image url" defaultValue={blog.length !== 0 ? blog[0].image : ''} /> */}
                                     </div>
                                     <div className="modal-body custom-scroll">

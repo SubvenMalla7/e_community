@@ -13,7 +13,7 @@ class NotificationDropDown extends React.Component {
                 </div>
                 <ul className="dropdown-msg-list">
                     
-                    {notification==null?null: notification.slice(0, 5).map((_noti, i) => (
+                    {notification==null?null: notification.map((_noti, i) => (
                         <>
                             <Notification key={i} notification={_noti.notification} />
                             <hr class="solid" style={{ borderTop: '1px solid white', borderRadius: '0.5px' }}></hr>
