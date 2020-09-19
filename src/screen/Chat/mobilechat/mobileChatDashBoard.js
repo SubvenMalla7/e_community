@@ -36,12 +36,12 @@ class MobileChat extends React.Component {
         // chatbox.classList.remove('hidebox');
         await this.setState({ selectedChat: chatIndex, newChatFormVisible: false });
         this.msgRead();
-        this.handleMenuClick("/mobileChatView", this.state.chats[this.state.selectedChat], this.state.email);
+        this.handleMenuClick("/mobileChatView", chatIndex, this.state.email);
 
 
     }
     handleMenuClick = (pageUrl, chats, user, submitMessageFn) => {
-        this.props.history.push(pageUrl, { chats: chats, user: user });
+        this.props.history.push(pageUrl, { chatsIndex: chats, user: user });
 
 
     };

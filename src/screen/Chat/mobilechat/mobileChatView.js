@@ -10,7 +10,10 @@ class MobileChatView extends React.Component {
         super();
         this.state = {
             chatText: '',
-            messageCount: 0
+            messageCount: 0,
+            chats: [],
+            email: null,
+            selectedChat: 0,
         };
     }
 
@@ -26,11 +29,36 @@ class MobileChatView extends React.Component {
             document.getElementById('chatbox').value = '';
         };
     }
-
-    componentDidMount = () => {
+    componentDidUpdate = () => {
         const cont = document.getElementById('chatviews');
         if (cont)
             cont.scrollTo(0, cont.scrollHeight);
+
+    }
+
+    componentDidMount = () => {
+
+        firebase.auth().onAuthStateChanged(async _users => {
+            if (!_users)
+                this.props.history.push('/');
+            else {
+                await firebase
+                    .firestore()
+                    .collection('chats')
+                    .where('users', 'array-contains', this.props.location.state.user)
+                    .onSnapshot(async res => {
+                        const chats = res.docs.map(_doc => _doc.data());
+                        await this.setState({
+                            email: _users.email,
+                            chats: chats,
+                            selectedChat: this.props.location.state.chatsIndex
+
+                        });
+
+                    });
+
+            }
+        })
 
     }
     findProfile = async (id) => {
@@ -55,7 +83,7 @@ class MobileChatView extends React.Component {
 
     submitMessage = (msg) => {
         document.getElementById('chatbox').value = '';
-        const docKey = this.buildDocKey(this.props.location.state.chats
+        const docKey = this.buildDocKey(this.state.chats[this.state.selectedChat]
             .users
             .filter((_usr, i) => _usr !== this.props.location.state.user[i]))
         console.log("docccc", msg);
@@ -71,7 +99,7 @@ class MobileChatView extends React.Component {
                 }),
                 receiverHasRead: false
             });
-        console.log("doneeeeeeeeeeeeeeeeeee");
+
         firebase
             .firestore()
             .collection('badge')
@@ -84,7 +112,9 @@ class MobileChatView extends React.Component {
     buildDocKey = (friend) => friend.sort().join(':');
     render() {
 
-        const { chats, user } = this.props.location.state;
+        const { chatsIndex } = this.props.location.state;
+        const { chats, email } = this.state;
+
         if (chats === undefined) {
             return (<main id="chatviews"></main>)
         } else {
@@ -96,15 +126,16 @@ class MobileChatView extends React.Component {
                         <div className="message-info " style={{ height: "90vh", width: "100vw" }}>
                             <div className="message-header"  >
                                 <div className="move-message" style={{ height: "15vh", marginTop: "-15px", padding: "0px" }} >
-                                    {chats.chatName}
+                                    {chats[chatsIndex] === undefined ? null :chats[chatsIndex].chatName}
                                 </div>{/* /.move-message */}
                             </div>{/* /.message-header */}
                             <div className="message-box" id="chatviews" style={{ height: "67vh", overflow: "scroll", padding: "25px 100px" }} >
                                 {
-                                    chats.message.map((_msg, i) => {                                      
+
+                                    chats[chatsIndex] === undefined ? null : chats[chatsIndex].message.map((_msg, i) => {
                                         return (
                                             < div key={i} >
-                                                {_msg.sender === user ? <MessageOut message={_msg.message} sender={_msg.sender} image={this.state.image} /> : <MessageIn message={_msg.message} sender={_msg.sender} />}
+                                                {_msg.sender === email ? <MessageOut message={_msg.message} sender={_msg.sender} image={this.state.image} /> : <MessageIn message={_msg.message} sender={_msg.sender} />}
                                             </div>
                                         )
                                     })
