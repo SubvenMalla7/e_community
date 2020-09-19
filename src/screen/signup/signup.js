@@ -136,12 +136,12 @@ class SignUp extends React.Component {
                                             <option value="Teacher">Teacher</option>
 
                                         </select>
-                                        <Button  type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>Submit</Button>
+                                        <Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>Submit</Button>
                                     </form>
                                     {
                                         this.state.signupError ? <Typography className={classes.errorText} component='h5' variant='h6' >{this.state.signupError}</Typography> : null
                                     }
-                                    <Typography component='h5' variant='h6' className={classes.hasAccountHeader}>
+                                    <Typography component='h5' variant='h6' className={classes.hasAccountHeader} style={{ color: "#ff914d" }}>
                                         Already Have an Account?
                     </Typography>
                                     <Link className={classes.signUpLink} to='/'>Log In</Link>

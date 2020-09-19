@@ -37,43 +37,45 @@ class MessageDropDown extends React.Component {
         })
 
     }
+    buildDocKey = (friend) => friend.sort().join(':');
 
-    goToChat = async (docKey) => {
-        const userInChat = docKey.split(":");
-        const chat = this.state.chats.find(chat => userInChat.every(_user => chat.users.includes(_user))); //finds the chat 
-        this.setState({ newChatFormVisible: false }); // removes the chat form 
-        await this.selectChat(this.state.chats.indexOf(chat)); //opens the chat exited
-        
+    // goToChat = async (docKey) => {
+    //     const userInChat = docKey.split(":");
+    //     const chat = this.state.chats.find(chat => userInChat.every(_user => chat.users.includes(_user))); //finds the chat 
+    //     this.setState({ newChatFormVisible: false }); // removes the chat form 
+    //     await this.selectChat(this.state.chats.indexOf(chat)); //opens the chat exited
+
+    // }
+    clickedmsg = (i) => {
+        let docKey = this.buildDocKey(this.state.chats[i].users
+            .filter((_usr, i) => _usr !== this.state.email[i]));
+        // this.goToChat(docKey);
+        console.log("dock", docKey);
+        this.handleMenuClick("/message", docKey, true, i);
+    }
+    handleMenuClick = (pageUrl, docKey, dropDown, selectedChat) => {
+        this.props.history.push(pageUrl, { docKey: docKey, dropDown: dropDown, selectedChat: selectedChat });
+
     }
 
-
     render() {
-
-        const { history } = this.props;
-
-
-
-        const handleMenuClick = (pageUrl) => {
-            history.push(pageUrl);
-            
-        };
         let chat = this.state.chats;
         const d = new Date()
         const mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(d);
         const da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
         return (
             <>
-                <div className="message-dropdown hidebox" id="a" style={{height:"auto"}}>
+                <div className="message-dropdown hidebox" id="a" style={{ height: "auto" }}>
                     <div className="dropdown-title">
                         <p className="recent-msg">recent message</p>
 
                     </div>
                     <ul className="dropdown-msg-list">
 
-                        { chat.slice(0, 3).map((_chat, i) => {
+                        {chat.slice(0, 3).map((_chat, i) => {
                             return (
-                                <div key={i}>
-                                    <Message name={_chat.chatName} message={_chat.message[_chat.message.length - 1].message.substring(0, 30)} da={da} mo={mo} index={i}/>
+                                <div key={i} onClick={() => this.clickedmsg(i)}>
+                                    <Message name={_chat.chatName} message={_chat.message[_chat.message.length - 1].message.substring(0, 30)} da={da} mo={mo} index={i} />
                                 </div>
 
                             )
@@ -82,7 +84,7 @@ class MessageDropDown extends React.Component {
 
                     </ul>
                     <div className="msg-dropdown-footer">
-                        <button onClick={() => handleMenuClick('/message')} >See all in messenger</button>
+                        <button onClick={() => this.handleMenuClick('/message', "", false)} >See all in messenger</button>
 
                     </div>
                 </div>
@@ -94,7 +96,7 @@ class MessageDropDown extends React.Component {
 }
 const Message = (props) => {
     return (
-        <li className="msg-list-item d-flex justify-content-between" onClick={()=>this.goToChat()}>
+        <li className="msg-list-item d-flex justify-content-between">
             {/* profile picture end */}
             <div className="profile-thumb">
                 <figure className="profile-thumb-middle">

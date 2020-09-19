@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: "0px 1px 20px 0px rgba(85, 85, 85, 0.25)",
     },
     profile_head: { padding: "12px" },
-    profile_head_name: { fontSize: "16px", fontWeight: "500", lineHeight: "1", paddingBottom: "7px" ,color:"#ff914d"},
+    profile_head_name: { fontSize: "16px", fontWeight: "500", lineHeight: "1", paddingBottom: "7px", color: "#ff914d" },
     profile_head_name_a: { color: "#333333" },
     profile_head_name_a_hover: { color: "#dc4734" },
     profile_head_mail: { fontSize: "13px", color: "#ff914d", display: "block" },
@@ -45,12 +45,12 @@ const NavBar = (props) => {
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const { history, notification, messageCount, notiCount,proff } = props;
+    const { history, notification, messageCount, notiCount, proff } = props;
 
-    var active = "/blog";
+    // var active = "/blog";
     const handleMenuClick = (pageUrl, currentUsr, email, name, bio, image) => {
-        history.push(pageUrl, { currentUser: currentUsr, email: email, name: name, bio: bio, image: image,proff:proff });
-        active = pageUrl;
+        history.push(pageUrl, { currentUser: currentUsr, email: email, name: name, bio: bio, image: image, proff: proff });
+        // active = pageUrl;
 
     };
     const resetBadge = async () => {
@@ -108,21 +108,21 @@ const NavBar = (props) => {
                             <div className="header-top-navigation">
                                 <nav>
                                     <ul style={{ margin: "0" }}>
-                                        <li className="active"><IconButton aria-label="show Home" color="inherit" size="medium" onClick={() => { handleMenuClick('/blog') }}><HomeIcon color={active === "/blog" ? "primary" : "inherit"} /></IconButton></li>
-                                        <li className="msg-trigger"><a href="#a" onClick={() => {
+                                        <li className="active" ><IconButton aria-label="show Home" color="inherit" size="medium" onClick={() => { handleMenuClick('/blog') }}><HomeIcon color="inherit" /></IconButton></li>
+                                        <li className="msg-trigger"> <IconButton onClick={() => {
                                             let box = document.querySelector('.message-dropdown');
                                             box.classList.remove('hidebox');
                                             resetBadge();
-                                        }}><IconButton aria-label="show 4 new mails" color="inherit" size="medium">
-                                                <Badge badgeContent={messageCount
-                                                } color="primary">
-                                                    <MailIcon color={active === "/message" ? "primary" : "inherit"} />
-                                                </Badge>
-                                            </IconButton></a>
+                                        }} aria-label="show 4 new mails" color="inherit" size="medium">
+                                            <Badge badgeContent={messageCount
+                                            } color="primary">
+                                                <MailIcon color="inherit" />
+                                            </Badge>
+                                        </IconButton>
                                             {/* Message Drop Down */}
                                             <MessageDropDown />
                                         </li>
-                                        <li className="notification-trigger"> <IconButton onClick={() => {
+                                        <li className="notification-trigger" style={{ borderColor: "white" }}> <IconButton onClick={() => {
                                             let box = document.querySelector('.notification-dropdown');
                                             box.classList.remove('hidebox');
                                             resetNotiBadge();

@@ -16,6 +16,7 @@ class ChatDashboard extends React.Component {
             email: null,
             chats: [],
             messageCount: 0,
+            notification: [],
         };
     }
 
@@ -55,6 +56,16 @@ class ChatDashboard extends React.Component {
 
                         });
 
+                    });
+                await firebase
+                    .firestore()
+                    .collection('notification')
+                    .orderBy('date', 'desc')
+                    .onSnapshot(async res => {
+                        const notification = res.docs.map(_doc => _doc.data());
+                        await this.setState({
+                            notification: notification
+                        });
                     });
             }
         })
@@ -142,7 +153,7 @@ class ChatDashboard extends React.Component {
     render() {
         return (
             <>
-                <NavBar />
+                <NavBar notification={this.state.notification} />
                 {console.log("chats", this.state.chats)}
                 <div className="main-wrapper pt-70" style={{ paddingTop: '95px', marginTop: "0", height: "100vh" }}>
                     <MessageList history={this.props.history} newchatFn={this.newChat} selectFnChat={this.selectChat}

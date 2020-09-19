@@ -26,7 +26,12 @@ Table of content
 22. sidebar
 23. footer
 -------------------------------------------------------------------*/
+
 /*------ Typography Style Start ------*/
+
+* {
+  outline: none;
+}
 html,
 body {
   width: 100%;
@@ -109,6 +114,8 @@ button {
   cursor: pointer;
   outline: none;
   padding: 0;
+
+  background: none;
   -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: 0.4s;
@@ -127,9 +134,10 @@ button:focus {
   outline: none;
   -webkit-box-shadow: none;
   box-shadow: none;
+  border-color: white;
 }
 button:active {
-  background-color: red;
+  background-color: #ff914d;
 }
 input,
 textarea {
@@ -981,20 +989,20 @@ textarea:focus {
   -webkit-box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
   box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
 }
-.search-dropdown{  
-    top: 100%;
-  
-    left: 20%;
-    width: 300px;
-    height: 300px;
-    padding: 15px;
-    position: absolute;
-    background-color: #fff;
-    border-radius: 0 0 2px 2px;
-    z-index: 999;
-    overflow: auto;
-    -webkit-box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
-    box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
+.search-dropdown {
+  top: 100%;
+
+  left: 20%;
+  width: 300px;
+  height: 300px;
+  padding: 15px;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 0 0 2px 2px;
+  z-index: 999;
+  overflow: auto;
+  -webkit-box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
+  box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
 }
 
 .hidebox {
@@ -1648,10 +1656,7 @@ textarea:focus {
 
 .author a {
   color: #ff914d;
-  
 }
-
-
 
 .post-settings-bar {
   margin-left: auto;

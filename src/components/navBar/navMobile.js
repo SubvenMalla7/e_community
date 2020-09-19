@@ -11,8 +11,8 @@ import { withRouter } from 'react-router-dom';
 import Menu from '@material-ui/core/Menu';
 
 import MessageDropDown from '../navBar/messageDropdown';
-import NotificationDropDown from '../dropdownNotification';
-import CalenderDropDown from '../calender/calenderDropdown';
+
+
 const firebase = require("firebase");
 
 const useStyles = makeStyles((theme) => ({
@@ -39,10 +39,10 @@ const MobileNav = (props) => {
     };
     const { history, notification, messageCount, notiCount } = props;
 
-    var active = "/blog";
+
     const handleMenuClick = (pageUrl) => {
         history.push(pageUrl);
-        active = pageUrl;
+
     };
     const resetBadge = async () => {
         console.log("presssed");
@@ -105,40 +105,37 @@ const MobileNav = (props) => {
                             <li>
                                 <IconButton aria-label="show Home" color="inherit" onClick={() => handleMenuClick('/blog')}><HomeIcon /></IconButton>
                             </li>
-                            <li className="msg-trigger"><a href="#a" onClick={() => {
+                            <li className="msg-trigger"> <IconButton onClick={() => {
                                 handleMenuClick('/mobMessage')
                                 resetBadge();
-                            }}><IconButton aria-label="show 4 new mails" color="inherit" size="medium">
-                                    <Badge badgeContent={messageCount
-                                    } color="primary">
-                                        <MailIcon color={active === "/message" ? "primary" : "inherit"} />
-                                    </Badge>
-                                </IconButton></a>
+                            }} aria-label="show 4 new mails" color="inherit" size="medium">
+                                <Badge badgeContent={messageCount
+                                } color="primary">
+                                    <MailIcon />
+                                </Badge>
+                            </IconButton>
                                 {/* Message Drop Down */}
                                 <MessageDropDown />
                             </li>
                             <li className="notification-trigger"> <IconButton onClick={() => {
-                                let box = document.querySelector('.notification-dropdown');
-                                box.classList.remove('hidebox');
                                 resetNotiBadge();
+                                history.push("/mobileNotification", { notification: notification })
                             }} aria-label="show 17 new notifications" color="inherit" >
                                 <Badge badgeContent={notiCount} color="primary">
                                     <NotificationsIcon />
                                 </Badge>
                             </IconButton>
-                                <NotificationDropDown notification={notification} />
+
                             </li>
 
                             <li className="notification-trigger"> <IconButton onClick={() => {
-                                let box = document.querySelector('.calender-dropdown');
-                                box.classList.remove('hidebox');
-
+                                handleMenuClick("/mobileCalender")
                             }} aria-label="show 17 new notifications" color="inherit" >
                                 <Badge color="primary">
                                     <CalendarTodayIcon />
                                 </Badge>
                             </IconButton>
-                                <CalenderDropDown />
+
                             </li>
                         </ul>
                     </div>

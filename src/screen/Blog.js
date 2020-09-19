@@ -20,6 +20,7 @@ class Blog extends React.Component {
   }
 
   componentDidMount = () => {
+    
     firebase.auth().onAuthStateChanged(async _users => {
       if (!_users)
         this.props.history.push('/');

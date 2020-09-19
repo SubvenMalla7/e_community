@@ -129,7 +129,7 @@ class Login extends React.Component {
                                         null
                                     }
 
-                                    <Typography component='h5' variant='h6' className={classes.noAccountHeader}>
+                                    <Typography component='h5' variant='h6' className={classes.noAccountHeader} style={{ color: "#ff914d" }}>
                                         Don't Have an Account?   </Typography>
                                     <Link className={classes.signUpLink} to='/signup'>Sign Up</Link>
                                 </Paper>
