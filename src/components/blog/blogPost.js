@@ -24,7 +24,7 @@ class Post extends React.Component {
                     {/* post title start */}
                     <div className="post-title d-flex align-items-center">
                         {/* profile picture end */}
-                        
+
                         <div className="profile-thumb">
 
                             <figure className="profile-thumb-middle">
@@ -33,7 +33,7 @@ class Post extends React.Component {
 
                         </div>
                         {/* profile picture end */}
-                        <div className="posted-author" onClick={()=>console.log()}>
+                        <div className="posted-author" onClick={() => console.log()}>
                             <h6 className="author" style={{ color: '#ff914d' }}>Admin</h6>
                             <span className="post-time">{id.substring(0, 10)}</span>
                         </div>
@@ -57,10 +57,10 @@ class Post extends React.Component {
                             {body}</p>
                         <div className="post-thumb-gallery">
                             <figure className="post-thumb img-popup">
-                                <a href="assets/images/post/post-large-1.jpg">
-                                    <img src={image} alt="Blog_image" />
 
-                                </a>
+                                <img src={image} alt="Blog_image" />
+
+
                             </figure>
                         </div>
 
