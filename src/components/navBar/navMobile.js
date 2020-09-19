@@ -37,11 +37,11 @@ const MobileNav = (props) => {
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const { history, notification, messageCount, notiCount } = props;
 
 
-    const handleMenuClick = (pageUrl) => {
-        history.push(pageUrl);
+    const { history, notification, messageCount, notiCount, proff } = props;
+    const handleMenuClick = (pageUrl, currentUsr, email, name, bio, image) => {
+        history.push(pageUrl, { currentUser: currentUsr, email: email, name: name, bio: bio, image: image, proff: proff });
 
     };
     const resetBadge = async () => {
@@ -82,8 +82,8 @@ const MobileNav = (props) => {
             </MenuItem>
             <hr bordertop="10px solid #bbb" borderradius="5px" />
             <ul>
-                <MenuItem className={classes.profile_body} onClick={() => handleMenuClick('/profile')}>Profile</MenuItem>
-                <MenuItem className={classes.profile_body} onClick={() => firebase.auth().signOut()}>Sign out</MenuItem>
+                <MenuItem className={classes.profile_body} onClick={() => handleMenuClick('/profile', true)}>Profile</MenuItem>
+                <MenuItem className={classes.profile_body} onClick={() => handleMenuClick('/')}>Sign out</MenuItem>
             </ul>
         </Menu >
     );
