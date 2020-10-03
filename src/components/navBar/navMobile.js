@@ -2,6 +2,7 @@ import React from "react";
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import HomeIcon from '@material-ui/icons/Home';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import Badge from '@material-ui/core/Badge';
 import MailIcon from '@material-ui/icons/Mail';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
@@ -105,6 +106,7 @@ const MobileNav = (props) => {
                             <li>
                                 <IconButton aria-label="show Home" color="inherit" onClick={() => handleMenuClick('/blog')}><HomeIcon /></IconButton>
                             </li>
+                            <li className="active" ><IconButton aria-label="show Home" color="inherit" size="medium" onClick={() => { handleMenuClick('/discussion') }}><AssignmentIcon color="inherit" /></IconButton></li>
                             <li className="msg-trigger"> <IconButton onClick={() => {
                                 handleMenuClick('/mobMessage')
                                 resetBadge();

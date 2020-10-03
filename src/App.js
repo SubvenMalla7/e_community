@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Profile from "./screen/profile/Profile"
 import Blog from "./screen/Blog";
+import Discussion from "./screen/discussion";
 import Login from "./screen/Login/login";
 import SignUp from "./screen/signup/signup";
 import { AuthProvider } from "./Auth";
@@ -31,8 +32,8 @@ export default function App() {
     <div className={classes.container}>
       <AuthProvider>
         <Switch>
-
           <ProtectedRoute exact from="/blog" component={Blog} />
+          <ProtectedRoute exact from="/discussion" component={Discussion} />
           <Route exact from="/" component={Login} />
           <Route exact from="/signup" component={SignUp} />
           <ProtectedRoute exact from="/message" component={ChatDashboard} />

@@ -5,6 +5,7 @@ import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import HomeIcon from '@material-ui/icons/Home';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
 import MailIcon from '@material-ui/icons/Mail';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
@@ -109,6 +110,7 @@ const NavBar = (props) => {
                                 <nav>
                                     <ul style={{ margin: "0" }}>
                                         <li className="active" ><IconButton aria-label="show Home" color="inherit" size="medium" onClick={() => { handleMenuClick('/blog') }}><HomeIcon color="inherit" /></IconButton></li>
+                                        <li className="active" ><IconButton aria-label="show Home" color="inherit" size="medium" onClick={() => { handleMenuClick('/discussion') }}><AssignmentIcon color="inherit" /></IconButton></li>
                                         <li className="msg-trigger"> <IconButton onClick={() => {
                                             let box = document.querySelector('.message-dropdown');
                                             box.classList.remove('hidebox');
