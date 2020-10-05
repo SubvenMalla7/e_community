@@ -93,7 +93,7 @@ class Discussion extends React.Component {
 
         await firebase
             .firestore()
-            .collection('blog')
+            .collection('discussion')
             .where('id', '==', id)
             .onSnapshot(async res => {
                 const blogs = res.docs.map(_doc => _doc.data());

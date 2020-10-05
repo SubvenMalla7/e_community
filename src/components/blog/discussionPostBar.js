@@ -168,7 +168,7 @@ class DiscussionPostBar extends React.Component {
                         {/* share content box start */}
                         <div className="share-content-box w-100">
                             <form className="share-text-box">
-                                <textarea name="share" className="share-text-field" aria-disabled="true" placeholder="Post Your Blog" data-toggle="modal" data-target="#textbox" id="email" defaultValue={""} />
+                                <textarea name="share" className="share-text-field" aria-disabled="true" placeholder="Post Your Discussion" data-toggle="modal" data-target="#textbox" id="email" defaultValue={""} />
                                 <button className="btn-share" data-toggle="modal" type="submit">share</button>
                             </form>
                         </div>
@@ -178,7 +178,7 @@ class DiscussionPostBar extends React.Component {
                             <div className="modal-dialog">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h5 className="modal-title">Post Your Blog</h5>
+                                        <h5 className="modal-title">Post Your Discussion</h5>
                                         <button type="button" className="close" onClick={() => {
                                             document.getElementById("textbox").style.display = "none";
                                             this.clear()
@@ -187,7 +187,7 @@ class DiscussionPostBar extends React.Component {
                                         </button>
                                     </div>
                                     <div className="modal-body custom-scroll" >
-                                        <textarea required name="share" className="share-field-big custom-scroll" onChange={(e) => this.userTyping("title", e)} style={{ height: '50px' }} id="title" placeholder="Blog title" defaultValue={blog.length !== 0 ? blog[0].title : ''}></textarea>
+                                        <textarea required name="share" className="share-field-big custom-scroll" onChange={(e) => this.userTyping("title", e)} style={{ height: '50px' }} id="title" placeholder="Discussion title" defaultValue={blog.length !== 0 ? blog[0].title : ''}></textarea>
                                     </div>
                                     <div className="modal-body custom-scroll" style={{ height: '80px' }}>
                                         <input type="file" onChange={(e) => this.userTyping("image", e)} defaultValue={blog.length !== 0 ? blog[0].image : ''}></input>
@@ -195,7 +195,7 @@ class DiscussionPostBar extends React.Component {
                                         {/* <textarea required name="share" className="share-field-big custom-scroll" onChange={(e) => this.userTyping("image", e)} id="image" placeholder="Image url" defaultValue={blog.length !== 0 ? blog[0].image : ''} /> */}
                                     </div>
                                     <div className="modal-body custom-scroll">
-                                        <textarea required name="share" className="share-field-big custom-scroll" onChange={(e) => this.userTyping("body", e)} style={{ height: '250px' }} id="body" placeholder="Blog body" defaultValue={blog.length !== 0 ? blog[0].body : ''} />
+                                        <textarea required name="share" className="share-field-big custom-scroll" onChange={(e) => this.userTyping("body", e)} style={{ height: '250px' }} id="body" placeholder="Discussion body" defaultValue={blog.length !== 0 ? blog[0].body : ''} />
                                     </div>
                                     <div className="modal-footer">
                                         <h4 id="errorEmpty" style={{ color: 'red' }}>{this.state.valueError}</h4>
