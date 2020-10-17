@@ -111,7 +111,7 @@ class Discussion extends React.Component {
         return (
             <>
 
-                <NavBar notification={notification} image={this.state.imageAsUrl} messageCount={this.state.messageCount} notiCount={this.state.notiCount} />
+                <NavBar notification={notification} image={this.state.imageAsUrl} messageCount={this.state.messageCount} notiCount={this.state.notiCount} imageAsUrlAdmin={this.state.imageAsUrlAdmin} />
                 <main>
                     <div className="main-wrapper pt-70">
                         <div className="container">

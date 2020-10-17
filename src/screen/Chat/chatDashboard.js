@@ -17,6 +17,7 @@ class ChatDashboard extends React.Component {
             chats: [],
             messageCount: 0,
             notification: [],
+            imageAsUrlAdmin: "",
         };
     }
 
@@ -66,6 +67,18 @@ class ChatDashboard extends React.Component {
                         await this.setState({
                             notification: notification
                         });
+                    });
+                    await firebase
+                    .firestore()
+                    .collection('users')
+                    .where('email', '==', "admin@admin.com")
+                    .onSnapshot(async res => {
+                        const userData = res.docs.map(_doc => _doc.data());
+
+                        await this.setState({
+                            imageAsUrlAdmin: userData[0].image,
+                        });
+
                     });
             }
         })
@@ -153,7 +166,7 @@ class ChatDashboard extends React.Component {
     render() {
         return (
             <>
-                <NavBar notification={this.state.notification} />
+                <NavBar notification={this.state.notification}  imageAsUrlAdmin={this.state.imageAsUrlAdmin}/>
                 {console.log("chats", this.state.chats)}
                 <div className="main-wrapper pt-70" style={{ paddingTop: '95px', marginTop: "0", height: "100vh" }}>
                     <MessageList history={this.props.history} newchatFn={this.newChat} selectFnChat={this.selectChat}
