@@ -46,7 +46,7 @@ const NavBar = (props) => {
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    const { history, notification, messageCount, notiCount, proff } = props;
+    const { history, notification, messageCount, notiCount, proff,imageAsUrlAdmin } = props;
 
     // var active = "/blog";
     const handleMenuClick = (pageUrl, currentUsr, email, name, bio, image) => {
@@ -85,7 +85,7 @@ const NavBar = (props) => {
             open={isMenuOpen}
             onClose={() => setAnchorEl(null)}>
             <MenuItem>
-                <div className={classes.profile_head}>
+                <div className={classes.profile_head}  onClick={() => handleMenuClick('/profile', true)}>
                     <h5 className={classes.profile_head_name} >{firebase.auth().currentUser.displayName}</h5>
                     <h6 className={classes.profile_head_mail} color="#ff914d">{firebase.auth().currentUser.email}</h6>
                 </div>
@@ -133,7 +133,7 @@ const NavBar = (props) => {
                                                 <NotificationsIcon />
                                             </Badge>
                                         </IconButton>
-                                            <NotificationDropDown notification={notification} />
+                                            <NotificationDropDown notification={notification}  imageAsUrlAdmin={imageAsUrlAdmin}/>
                                         </li>
 
                                         <li className="notification-trigger"> <IconButton onClick={() => {

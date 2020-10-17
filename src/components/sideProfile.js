@@ -30,7 +30,7 @@ class SideProfile extends React.Component {
                         <div className="profile-banner" style={{ backgroundColor: '#fc9e68', marginTop: '10', borderRadius: '32px' }}>
                             <figure className="profile-banner-small">
 
-                                <a href={{}} className="profile-thumb-2">
+                                <a href={{}} className="profile-thumb-2" >
                                     <img src={this.props.image===""?'../assets/images/account.png':this.props.image} alt="" />
                                 </a>
                             </figure>

@@ -10,7 +10,7 @@ class DiscussionPost extends React.Component {
         document.getElementById('textbox').style.display = "block";
         // document.getElementById("textbox").style.display = "none";
     }
-    deleteBlog = async (id) => await firebase.firestore().collection('blog').doc(id).delete()
+    deleteBlog = async (id) => await firebase.firestore().collection('discussion').doc(id).delete()
 
 
 

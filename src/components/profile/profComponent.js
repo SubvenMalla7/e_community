@@ -9,7 +9,7 @@ class ProfileComponent extends React.Component {
             email: '',
             name: '',
             bio: '',
-            proff:'',
+            proff: '',
             imageAsFile: null,
             imageAsUrl: null,
             valueError: '',
@@ -32,7 +32,7 @@ class ProfileComponent extends React.Component {
                         await this.setState({
                             imageAsUrl: userData[0].image,
                             bio: userData[0].bio,
-                            proff:userData[0].proff,
+                            proff: userData[0].proff,
                         });
 
                     });
@@ -79,7 +79,7 @@ class ProfileComponent extends React.Component {
                 await this.setState({
                     imageAsUrl: userData[0].image,
                     bio: userData[0].bio,
-                   
+
 
                 });
 
@@ -109,6 +109,9 @@ class ProfileComponent extends React.Component {
                     bio: this.state.bio,
                     image: this.state.imageAsUrl
                 });
+            await firebase.auth().currentUser.updateProfile({
+                displayName: this.state.name,
+            });
 
 
             await firebase.firestore().collection('notification').doc(Date()).set({
@@ -142,7 +145,7 @@ class ProfileComponent extends React.Component {
     }
     render() {
         const { currentUser, name, email, bio, image, proff } = this.props;
-        const color ="#ff914d" ;
+        const color = "#ff914d";
         return (
             <>
                 <div style={{ height: "4vh" }}></div>
@@ -214,9 +217,10 @@ class ProfileComponent extends React.Component {
                                             <div className="h5 ">
                                                 <i className="ni business_briefcase-24 mr-2" />{currentUser === true ? this.state.email : email}
                                             </div>
-                                            <div className="h5 ">
+
+                                            {email === "admin@admin.com" ? console.log("admin") : <div className="h5 ">
                                                 <i className="ni business_briefcase-24 mr-2" />{currentUser === true ? this.state.proff : proff}
-                                             </div>
+                                            </div>}
                                             <div className="text-center" style={{ height: "fit-content", backgroundColor: "white", margin: "15px", borderRadius: "32px", padding: "12px" }}>
 
                                                 <p >{currentUser === true ? this.state.bio : bio}</p>

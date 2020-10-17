@@ -20,7 +20,7 @@ class Blog extends React.Component {
   }
 
   componentDidMount = () => {
-    
+
     firebase.auth().onAuthStateChanged(async _users => {
       if (!_users)
         this.props.history.push('/');
@@ -110,7 +110,7 @@ class Blog extends React.Component {
     return (
       <>
 
-        <NavBar notification={notification} image={this.state.imageAsUrl} messageCount={this.state.messageCount} notiCount={this.state.notiCount} />
+        <NavBar notification={notification} image={this.state.imageAsUrl} messageCount={this.state.messageCount} notiCount={this.state.notiCount} imageAsUrlAdmin={this.state.imageAsUrlAdmin} />
         <main>
           <div className="main-wrapper pt-70">
             <div className="container">

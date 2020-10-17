@@ -40,8 +40,8 @@ class NewChatForm extends React.Component {
         if (userExists) {
             console.log("userExists");
             const chatExists = await this.chatExists();
-            chatExists ? this.goToChat() : console.log('no chat');
-            this.createChat();
+            chatExists ? this.goToChat() :
+                this.createChat();
         } else {
             console.log("no User");
         }

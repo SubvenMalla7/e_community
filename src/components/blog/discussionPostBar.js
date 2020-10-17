@@ -101,7 +101,7 @@ class DiscussionPostBar extends React.Component {
 
             await firebase
                 .firestore()
-                .collection('blog')
+                .collection('discussion')
                 .doc(blog.id)
                 .update({
                     title: this.state.title == null ? blog.title : this.state.title,

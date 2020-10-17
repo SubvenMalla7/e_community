@@ -3,7 +3,7 @@ import React from 'react';
 class NotificationDropDown extends React.Component {
     render() {
 
-        const { notification } = this.props;
+        const { notification ,imageAsUrlAdmin} = this.props;
 
         return (
             <div className="notification-dropdown hidebox " id="a">
@@ -15,7 +15,7 @@ class NotificationDropDown extends React.Component {
                     
                     {notification==null?null: notification.map((_noti, i) => (
                         <>
-                            <Notification key={i} notification={_noti.notification} />
+                            <Notification key={i} notification={_noti.notification} imageAsUrlAdmin={imageAsUrlAdmin} />
                             <hr class="solid" style={{ borderTop: '1px solid white', borderRadius: '0.5px' }}></hr>
                         </>
                     ))}
@@ -33,7 +33,7 @@ const Notification = (props) => {
             {/* profile picture end */}
             <div className="profile-thumb">
                 <figure className="profile-thumb-middle">
-                    <img src="assets/images/profile/profile-small-3.jpg" alt="profilepicture" />
+                    <img src={props.imageAsUrlAdmin} alt="profilepicture" />
                 </figure>
             </div>
             {/* profile picture end */}
